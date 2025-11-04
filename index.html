@@ -1,6 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <body style="margin:0; padding:0; height:100vh;">
-    <iframe src="mi-archivo.pdf" width="100%" height="100%" style="border:none;"></iframe>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mostrar TXT</title>
+</head>
+<body>
+  <h1>Contenido del archivo TXT</h1>
+  <pre id="contenido"></pre>
+
+  <script>
+    fetch('mi-archivo.txt')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('contenido').textContent = data;
+      })
+      .catch(error => {
+        document.getElementById('contenido').textContent = "No se pudo cargar el archivo.";
+      });
+  </script>
+</body>
 </html>
